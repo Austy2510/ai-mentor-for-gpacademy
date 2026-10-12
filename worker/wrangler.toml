@@ -1,0 +1,12 @@
+name = "skillsheba-proxy"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+
+[vars]
+# Comma-separated origins allowed to call the proxy (your GitHub Pages origin,
+# plus local dev). Origins only: no paths. Example:
+#   ALLOWED_ORIGINS = "https://austy2510.github.io,http://localhost:5173"
+ALLOWED_ORIGINS = "http://localhost:5173,http://localhost:4173"
+
+# Set the key as a secret, never here:
+#   npx wrangler secret put ANTHROPIC_API_KEY
