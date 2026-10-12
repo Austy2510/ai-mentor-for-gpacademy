@@ -26,3 +26,5 @@ img.virus-character,.hero-art img.virus-character{transform-origin:50% 95%;anima
 img.virus-character:hover{animation:virus-hello .8s ease-in-out 1}
 img.virus-character[data-mood="celebrating"]{animation:virus-celebrate 1s ease-in-out 2,virus-idle 4.5s ease-in-out 2s infinite}
 @media(prefers-reduced-motion:reduce){img.virus-character,.hero-art img.virus-character{animation:none!important;will-change:auto}}
+
+.msg-note{display:block;margin-top:8px;font-size:11px;color:#8a7f9c;white-space:normal}.typing{color:#7c8aa0;font-style:italic}.chat-form input:disabled{opacity:.6}

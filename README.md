@@ -2,17 +2,18 @@
 
 An always-on AI career mentor that sits on top of GP Academy (Grameenphone Academy) as a chat bubble on every page. A student fills in one profile ("who I am + my dream"), and Claude turns it into a skill roadmap, a CV, and a ranked list of employers. The full plan is in [`docs/SkillSheba_PRD.md`](docs/SkillSheba_PRD.md).
 
-**Demo layout**
-- `index.html`: a copy of the GP Academy landing page (the host site). The only change is one `<script>` tag at the bottom.
-- `public/skillsheba-widget.js`: the vanilla JS widget. It adds the bubble and opens the mentor in an iframe, so the host site's styles are never touched.
-- `mentor.html` + `src/`: the mentor app (React + TypeScript + Tailwind).
+**Live site:** https://austy2510.github.io/ai-mentor-for-gpacademy/
+
+## Layout
+
+- **Front end: Career Quest** (`index.html` + `public/app.js`, `public/style.css`, `public/assets/`). A gamified GP Academy experience guided by the character **Virus**: dashboard, quest map, courses, skills, CV studio, job match and events. It's plain JS with no build step; progress is saved in localStorage. Original notes: `docs/career-quest-README.txt`.
+  - The **AI Mentor** page (and "Ask Virus") gets real Claude answers through `src/quest-ai.ts`. Claude sees the student's goal, skills, quest progress and CV, and may only recommend courses, events and jobs from Career Quest's own catalog. If AI isn't connected, or a call fails, Virus falls back to the original offline answers.
+  - Connect AI on the mentor page with **Connect AI ✦** (proxy URL or your own key), or set `AI_PROXY_URL` at build time (see Deploy).
+- **SkillSheba mentor app** (`mentor.html` + `src/`): the full AI mentor from the PRD, with profile, AI skill gap, 1-click CV, employer match, events and an EN/বাংলা toggle. It's served at `/mentor.html` and can be embedded on any page with one script tag (`public/skillsheba-widget.js`).
 - `worker/`: an optional Cloudflare Worker that keeps the Claude API key off the browser.
+- `/career-quest/` redirects to the site root.
 
-## Career Quest prototype (`public/career-quest/`)
-
-A separate, self-contained static prototype of a gamified GP Academy experience: "Career Quest", guided by the character **Virus** (dashboard, quests, simulated mentor, CV studio, jobs, events). No build step; it's copied as-is into the site and served at `/career-quest/`. Its AI replies, jobs and events are simulated and progress is kept in localStorage. See `public/career-quest/README.txt`.
-
-## Features (MVP from the PRD)
+## SkillSheba mentor app features (MVP from the PRD)
 
 | Tab | What it does | AI call |
 |---|---|---|
@@ -32,10 +33,10 @@ A separate, self-contained static prototype of a gamified GP Academy experience:
 
 ```bash
 npm install
-npm run dev          # http://localhost:5173 (host page with the bubble)
+npm run dev          # http://localhost:5173 (Career Quest), /mentor.html (SkillSheba app)
 ```
 
-Open the bubble, then **⚙ Settings**. Either paste your proxy URL, or choose **My own API key** for a quick local test.
+To connect AI, use **Connect AI ✦** on the Career Quest mentor page or **⚙ Settings** in the SkillSheba app. Either paste your proxy URL, or choose **My own API key** for a quick local test. Both share the same setting.
 
 ## Deploy
 
