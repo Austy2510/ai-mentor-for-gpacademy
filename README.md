@@ -8,6 +8,10 @@ An always-on AI career mentor that sits on top of GP Academy (Grameenphone Acade
 - `mentor.html` + `src/`: the mentor app (React + TypeScript + Tailwind).
 - `worker/`: an optional Cloudflare Worker that keeps the Claude API key off the browser.
 
+## Career Quest prototype (`public/career-quest/`)
+
+A separate, self-contained static prototype of a gamified GP Academy experience: "Career Quest", guided by the character **Virus** (dashboard, quests, simulated mentor, CV studio, jobs, events). No build step; it's copied as-is into the site and served at `/career-quest/`. Its AI replies, jobs and events are simulated and progress is kept in localStorage. See `public/career-quest/README.txt`.
+
 ## Features (MVP from the PRD)
 
 | Tab | What it does | AI call |
