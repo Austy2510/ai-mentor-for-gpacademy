@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, claude/open-these-2-dr3t9k]
   workflow_dispatch:
 
 permissions:
